@@ -41,7 +41,9 @@ public class shop {
         item.item_deleted();
     }
     public void print(){
+        try{
         System.out.println("Name: " + name);
-        for (int i = 0; i < this.items_counter; i++) this.items[i].print();
+        for (int i = 0; i < this.items_counter; i++) this.items[i].print();}
+        catch (NullPointerException ignored) {}
     }
 }

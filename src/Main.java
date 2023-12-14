@@ -1,3 +1,4 @@
+import javax.management.InvalidAttributeValueException;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,22 +32,27 @@ public class Main {
         shop2.delete_item(0);
         shop2.print();
         //TEST OF EXPIRE METHODS
-        expire expire1 = new expire(1,1,1,1,1,1);
-        System.out.println(expire1.get_day());
-        System.out.println(expire1.get_month());
-        System.out.println(expire1.get_year());
-        System.out.println(expire1.get_hour());
-        System.out.println(expire1.get_minute());
-        System.out.println(expire1.get_second());
-        expire1.set_day(16);
-        expire1.set_month(12);
-        expire1.set_year(2003);
-        expire1.set_hour(11);
-        expire1.set_minute(11);
-        expire1.set_second(11);
-        expire1.print();
+        try {
+            expire expire1 = new expire(1,1,1,100,1,1);
+            System.out.println(expire1.get_day());
+            System.out.println(expire1.get_month());
+            System.out.println(expire1.get_year());
+            System.out.println(expire1.get_hour());
+            System.out.println(expire1.get_minute());
+            System.out.println(expire1.get_second());
+            expire1.set_day(16);
+            expire1.set_month(12);
+            expire1.set_year(2003);
+            expire1.set_hour(11);
+            expire1.set_minute(11);
+            expire1.set_second(11);
+            expire1.print();
+        } catch (InvalidAttributeValueException e) {
+            System.out.println(e.getMessage());
+            System.out.println("GOD DAMN");
+        }
         //TEST OF PROMOCODE METHODS
-        promocode promocode1 = new promocode(items, "zxc", expire1, 2);
+        promocode promocode1 = new promocode(items, "zxc", 2);
         promocode promocode2 = new promocode("qwe");
         promocode promocode3 = new promocode();
         promocode3.set_code(promocode1.get_code());
@@ -73,5 +79,20 @@ public class Main {
         item1.print();
         int int_price = vspomog.get_int_price(item1);
         System.out.println(int_price);
+        //dvumernie massivi
+        item[][] itemarr = new item[2][2];
+        itemarr[0][0] = item1;
+        itemarr[0][1] = item2;
+        itemarr[1][0] = item3;
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                try {
+                    itemarr[i][j].print();
+                } catch (NullPointerException e) {System.out.println("No item");}
+            }
         }
     }
+
+
+
+}

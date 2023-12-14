@@ -21,6 +21,13 @@ public class promocode {
         this.expire_date = new_expire;
         this.items_counter = items.length;
     }
+    public promocode(item[] items, String code, int discount){
+        this.code = code;
+        this.items = items;
+        this.discount = discount;
+        this.expire_date = new expire();
+        this.items_counter = items.length;
+    }
     public String get_code(){
         return this.code;
     }

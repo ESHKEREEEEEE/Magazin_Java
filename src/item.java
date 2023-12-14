@@ -19,7 +19,9 @@ public class item {
         this.price = 0;
     }
     public void print() {
-        System.out.println("Name: " + name + ", Discount: " + discount + ", Price: " + price + ", Total items " + total_items_count);
+        try {
+            System.out.println("Name: " + name + ", Discount: " + discount + ", Price: " + price + ", Total items " + total_items_count);
+        } catch (NullPointerException e) {System.out.println("No item");}
     }
     public String get_name() {
         return this.name;
@@ -30,7 +32,7 @@ public class item {
     public int get_discount() {
         return this.discount;
     }
-    public void set_name(String name) {
+    public void set_name(String name){
         if (this.name.isEmpty() && !name.isEmpty()) {total_items_count++;}
         this.name = name;
     }
