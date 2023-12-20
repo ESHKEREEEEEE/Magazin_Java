@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class sale {
     item[] items;
     String text;
@@ -42,5 +44,9 @@ public class sale {
     public void print(){
         System.out.println("Text: " + text);
         for (int i = 0; i < this.items_counter; i++) this.items[i].print();
+    }
+    public String toString() {
+        return  "Items: " + Arrays.toString(items) +
+                ", Text:" + text;
     }
 }

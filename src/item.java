@@ -1,7 +1,7 @@
 public class item {
     static int total_items_count;
     String name;
-    float price;
+    protected float price;
     int discount;
     public item(String name, int price, int discount){
         this.name = name;
@@ -47,6 +47,16 @@ public class item {
     }
     public static void item_deleted(){
         total_items_count--;
+    }
+    public String toString() {
+        String item_string;
+        if (name.isEmpty()) {item_string = "";}
+        else{
+            item_string = "Name: " + name +
+                    ", Price: " + price +
+                    ", Discount: " + discount;
+        }
+        return item_string;
     }
 }
 
