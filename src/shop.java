@@ -1,6 +1,4 @@
-import java.util.Arrays;
-
-public class shop {
+public class shop implements Cloneable{
     String name;
     item[] items;
     int items_counter;
@@ -56,5 +54,8 @@ public class shop {
             shop_string.append("\n");
         }
         return shop_string.toString();
+    }
+    public shop clone() {
+        return new shop(this.name, this.items);
     }
 }

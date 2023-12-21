@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class expiring_promocode extends promocode{
 
     expire expire_date;
@@ -33,9 +31,12 @@ public class expiring_promocode extends promocode{
         this.expire_date.print();
     }
     public String toString() {
-        return "Items: " + Arrays.toString(items) +
-                ", Code: " + code +
-                ", Discount: " + discount +
-                ", Expire: " + expire_date;
+        StringBuilder shop_string = new StringBuilder("Code: " + code + ", Discount" + discount + ", Expire: " + expire_date + ", Items :\n");
+        for (int i = 0; i < items_counter; i++)
+        {
+            shop_string.append(items[i].toString());
+            shop_string.append("\n");
+        }
+        return shop_string.toString();
     }
 }

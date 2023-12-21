@@ -1,4 +1,4 @@
-public class item {
+public class item implements Cloneable {
     static int total_items_count;
     String name;
     protected float price;
@@ -57,6 +57,13 @@ public class item {
                     ", Discount: " + discount;
         }
         return item_string;
+    }
+    public item clone() {
+        try {
+            return (item) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
 

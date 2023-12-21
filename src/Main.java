@@ -91,6 +91,32 @@ public class Main {
                 } catch (NullPointerException e) {System.out.println("No item");}
             }
         }
+        //cloning
+        //deep
+        shop shop4 = new shop();
+        shop4 = shop1.clone();
+        shop4.set_name("cloned");
+        System.out.println(shop1);
+        System.out.println(shop4);
+        //small
+        item item4 = new item();
+        item4 = item1.clone();
+        item4.set_name("cloned");
+        System.out.println(item1);
+        System.out.println(item4);
+        //interfaces
+        customer customer1 = new customer("Serega", 54, 1, 10000);
+        customer1.buy(item1);
+        System.out.println(customer1);
+        //expiring promocode
+        try {
+            expiring_promocode exp_pr1 = new expiring_promocode(items, "hihihi", new expire(1,1,1,1,1,1), 10);
+            exp_pr1.print_bez_vizova();
+            exp_pr1.print_s_vizovom();
+        } catch (InvalidAttributeValueException e) {
+            System.out.println("GOD_DAMN");
+        }
+
     }
 
 

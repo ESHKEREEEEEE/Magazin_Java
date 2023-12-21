@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class promocode {
     item[] items;
     String code;
@@ -55,8 +53,12 @@ public class promocode {
         for (int i = 0; i < this.items_counter; i++) this.items[i].print();
     }
     public String toString() {
-        return  "Items: " + Arrays.toString(items) +
-                ", Code: " + code +
-                ", Discount: " + discount;
+        StringBuilder shop_string = new StringBuilder("Code: " + code + ", Discount" + discount + ", Items :\n");
+        for (int i = 0; i < items_counter; i++)
+        {
+            shop_string.append(items[i].toString());
+            shop_string.append("\n");
+        }
+        return shop_string.toString();
     }
 }
