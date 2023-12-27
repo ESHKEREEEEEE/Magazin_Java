@@ -74,4 +74,12 @@ public class expire {
         this.hour = hour;
         if (this.hour < 0 || this.hour > 23) {throw new InvalidAttributeValueException("Hour needs to be less than 23 and more than 0");}
     }
+    public String toString() {
+        return  day +
+                "/" + month +
+                "/" + year +
+                " " + hour +
+                ":" + minute +
+                ":" + second;
+    }
 }

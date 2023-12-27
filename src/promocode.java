@@ -1,31 +1,20 @@
 public class promocode {
     item[] items;
     String code;
-    expire expire_date;
     int items_counter;
     int discount;
     public promocode(){
         this.code = "";
         this.items = new item[10];
-        this.expire_date = new expire();
     }
     public promocode(String code){
         this.code = code;
         this.items = new item[10];
-        this.expire_date = new expire();
-    }
-    public promocode(item[] items, String code, expire new_expire, int discount){
-        this.code = code;
-        this.items = items;
-        this.discount = discount;
-        this.expire_date = new_expire;
-        this.items_counter = items.length;
     }
     public promocode(item[] items, String code, int discount){
         this.code = code;
         this.items = items;
         this.discount = discount;
-        this.expire_date = new expire();
         this.items_counter = items.length;
     }
     public String get_code(){
@@ -40,17 +29,11 @@ public class promocode {
     public int get_items_counter(){
         return this.items_counter;
     }
-    public expire get_expire_date(){
-        return this.expire_date;
-    }
     public void set_code(String code){
         this.code = code;
     }
     public void set_discount(int discount){
         this.discount = discount;
-    }
-    public void set_expire_date(expire expire_date){
-        this.expire_date = expire_date;
     }
     public void set_items(item[] new_items){
         this.items = new_items;
@@ -68,6 +51,14 @@ public class promocode {
     public void print(){
         System.out.println("Code: " + code + ", Discount:" + discount);
         for (int i = 0; i < this.items_counter; i++) this.items[i].print();
-        this.expire_date.print();
+    }
+    public String toString() {
+        StringBuilder shop_string = new StringBuilder("Code: " + code + ", Discount" + discount + ", Items :\n");
+        for (int i = 0; i < items_counter; i++)
+        {
+            shop_string.append(items[i].toString());
+            shop_string.append("\n");
+        }
+        return shop_string.toString();
     }
 }

@@ -1,4 +1,4 @@
-public class shop {
+public class shop implements Cloneable{
     String name;
     item[] items;
     int items_counter;
@@ -45,5 +45,17 @@ public class shop {
         System.out.println("Name: " + name);
         for (int i = 0; i < this.items_counter; i++) this.items[i].print();}
         catch (NullPointerException ignored) {}
+    }
+    public String toString() {
+        StringBuilder shop_string = new StringBuilder("Name: " + name + ", Items :\n");
+        for (int i = 0; i < items_counter; i++)
+        {
+            shop_string.append(items[i].toString());
+            shop_string.append("\n");
+        }
+        return shop_string.toString();
+    }
+    public shop clone() {
+        return new shop(this.name, this.items);
     }
 }

@@ -39,8 +39,14 @@ public class sale {
     public int get_items_counter(){
         return this.items_counter;
     }
-    public void print(){
-        System.out.println("Text: " + text);
-        for (int i = 0; i < this.items_counter; i++) this.items[i].print();
+
+    public String toString() {
+        StringBuilder shop_string = new StringBuilder("Text: " + text + ", Items :\n");
+        for (int i = 0; i < items_counter; i++)
+        {
+            shop_string.append(items[i].toString());
+            shop_string.append("\n");
+        }
+        return shop_string.toString();
     }
 }
