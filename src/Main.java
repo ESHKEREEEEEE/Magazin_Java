@@ -1,7 +1,15 @@
 import javax.management.InvalidAttributeValueException;
+import java.util.Comparator;
+import java.util.Vector;
 
 public class Main {
     public static void main(String[] args) {
+        Comparator<promocode> comparator = (o1, o2) -> {
+            if (o1.get_discount() != o2.get_discount()) {
+                return Integer.compare(o1.get_discount(), o2.get_discount());
+            } else {
+                return o1.get_code().compareTo(o2.get_code());}
+        };
         //TEST OF ITEM METHODS
         item item1 = new item("eshkere", 1, 1);
         System.out.println(item1);
@@ -52,18 +60,7 @@ public class Main {
             System.out.println(e.getMessage());
             System.out.println("GOD DAMN");
         }
-        //TEST OF PROMOCODE METHODS
-        promocode promocode1 = new promocode(items, "zxc", 2);
-        promocode promocode2 = new promocode("qwe");
-        promocode promocode3 = new promocode();
-        promocode3.set_code(promocode1.get_code());
-        promocode3.set_items(promocode1.get_items());
-        promocode3.set_discount(promocode1.get_discount());
-        System.out.println(promocode3.get_items_counter());
-        promocode2.add_item(item1);
-        System.out.println(promocode2);
-        promocode2.delete_item(0);
-        System.out.println(promocode2);
+
         //TEST OF SALE METHODS
         sale sale1 = new sale("hype", items);
         sale sale2 = new sale("vibe");
@@ -93,13 +90,13 @@ public class Main {
         }
         //cloning
         //deep
-        shop shop4 = new shop();
+        shop shop4;
         shop4 = shop1.clone();
         shop4.set_name("cloned");
         System.out.println(shop1);
         System.out.println(shop4);
         //small
-        item item4 = new item();
+        item item4;
         item4 = item1.clone();
         item4.set_name("cloned");
         System.out.println(item1);
@@ -116,7 +113,20 @@ public class Main {
         } catch (InvalidAttributeValueException e) {
             System.out.println("GOD_DAMN");
         }
-
+        promocode promocode1 = new promocode("pudge");
+        promocode promocode2 = new promocode("techies");
+        expiring_promocode promocode3 = new expiring_promocode("sniper");
+        //контейнеры
+        Vector<promocode> v1 = new Vector<>();
+        v1.add(promocode1);
+        v1.add(promocode2);
+        v1.add(promocode3);
+        //поиск
+        if (v1.contains(promocode2)) {System.out.println("found"); System.out.println(promocode2);}
+        //сортировка
+        System.out.println(v1);
+        v1.sort(comparator);
+        System.out.println(v1);
     }
 
 
